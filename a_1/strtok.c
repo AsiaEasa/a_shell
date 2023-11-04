@@ -18,11 +18,6 @@ char **str_tok(char str[BUFFER_SIZE], char separate)
 
 	for (n = 0; str[n] != '\0'; n++)
 	{
-		if (str[n] == '#')
-		{
-			break;
-		}
-		
 		if (str[n] == separate)
 		{
 			str[n] = '\0';
@@ -31,6 +26,8 @@ char **str_tok(char str[BUFFER_SIZE], char separate)
 			words = t;
 			t = &str[n];
 		}
+		if (str[n+1] == '#')
+			break;
 		t++;
 	}
 	arg[i++] = words;
